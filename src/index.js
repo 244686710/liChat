@@ -4,7 +4,10 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import config from './config'
-import 'antd-mobile/dist/antd-mobile.css';
+import reducers from './reducers'
+import Login from './components/login/login.js'
+import Register from './components/register/register.js'
+import AuthRoute from './components/authroute/authroute'
 import {
     BrowserRouter, 
     Route,
@@ -12,9 +15,7 @@ import {
     Redirect,
     Switch
 } from 'react-router-dom'
-import Auth from './Auth'
-import Dasboard from './Dashboard'
-import reducers from './reducers'
+
 
 // const store = createStore(counter, applyMiddleware(thunk)) // applyMiddleware使用中间件
     // thunk的使用主要是修改我们action crate的方式
@@ -24,18 +25,18 @@ const store = createStore(reducers, compose(
 ));
 
 console.log(store.getState())
-
+function Boss() {
+    return <h3>boss页面</h3>
+}
  ReactDom.render(
     (<Provider store = {store}>  
         <BrowserRouter>
-            <Switch>
-            {/*只渲染命中的第一个Route*/}
-
-                {/*<Redirect to="qibinglian"></Redirect> */}
-                <Route path="/login" component={Auth}></Route>
-                <Route path="/dashboard" component={Dasboard}></Route>
-                <Redirect to='/dashboard'></Redirect>
-            </Switch>
+            <div>
+                <AuthRoute></AuthRoute>
+                <Route path="/boss" component={Boss}></Route>
+                <Route path="/login" component={Login}></Route>
+                <Route path="/register" component={Register}></Route>
+            </div>
         </BrowserRouter>
     </Provider>),
     document.getElementById('root')

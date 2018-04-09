@@ -1,0 +1,11 @@
+使用asios发送异步请求
+    如何发送，端口不一致，使用proxy配置转发
+    axios拦截器，统一对loading处理
+    redux里使用异步数据，渲染页面
+    
+    安装 npm install axios --save
+
+基于cookie 用户验证
+    1.express 依赖cookies-parser, 需要npm isntall cookie-parser --save 安装
+    2.cookies类似于一张身份卡，登录后服务器端返回，你带着cookie就可以访问受限资源
+    3.页cookie的管理流量器会自动处理
