@@ -1,0 +1,6 @@
+使用asios发送异步请求
+    如何发送，端口不一致，使用proxy配置转发
+    axios拦截器，统一对loading处理
+    redux里使用异步数据，渲染页面
+    
+    安装 npm install axios --save

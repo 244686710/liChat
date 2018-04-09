@@ -1,0 +1,45 @@
+Redux 是什么？
+    专注于状态管理的库
+        1.Redux专注于状态管理、和react解耦
+        2.单一状态，单向数据流
+        3.核心概念：store,state,action,reducer
+
+Redux如何和React一起用
+    1.把store.dispatch方法传递给组件，内部可以调用修改状态
+    2.Subscribe 订阅render函数，每次都修改重新渲染
+    3.Redux相关内容，移到单独的文件index.redux.js单独管理
+
+处理异步、调试工具、更优雅的和react结合
+    1.Redux 处理异步，需要redux-thunk插件
+    2. Npm install redux-devtools-extension并开启
+    3. 使用react-redux优雅的链接react和redux
+
+处理异步
+    Redux默认只处理同步，异步任务需要redux-thunk中间件
+    Npm install redux-thunk --save 
+    使用applyMiddleware 开启thunk中间件
+    Action 可以返回函数，使用dispatch提交action
+
+使用react-redux
+    1.npm install react-redux --save
+    2.忘记subscribe，记住reducer , action, dispatch即可
+    3.React-redux提供provider和connect 两个接口来链接
+
+React-redux具体使用
+    1. Provider组件在应用最外层，传入store既可，只用一次
+    2. Connect 负责从外部获取组件需要的参数
+    3. 
+
+使用装饰器优化connect代码
+    1.Npm run eject 弹出个性化配置
+    2.Npm install babel-plugin-transform-decorators-legacy 插件
+    3.Package.json里babel加上plugin配置
+
+
+React后续
+    1.什么数据应该放在React里
+    2.Redux管理ajax
+    3.Redux管理数据
+
+
+
