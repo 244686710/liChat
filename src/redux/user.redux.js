@@ -1,9 +1,11 @@
 
+import axios from 'axios';
 const REGiSTER_SUCCESS = 'REGiSTER_SUCCESS';
-const ERROR_MSG = 'ERROR_MSG'
+const ERROR_MSG = 'ERROR_MSG';
+
 
 const iniState = {
-    isAuth: '',
+    isAuth: false,
     msg: '',
     user: '',
     pwd: '',
@@ -26,7 +28,7 @@ function registerSuccess(data) {
 }
 
 function errorMsg (msg) {
-    return {msg, type: ERROR_MSG}
+    return { msg, type: ERROR_MSG }
 }
 
 export function register({user, pwd, repeatpwd, type}){
@@ -34,15 +36,15 @@ export function register({user, pwd, repeatpwd, type}){
         return errorMsg('用户名密码必须输入')
     }
     if(pwd !== repeatpwd){
-        return errorMsg('两次密码不相同')
+        return errorMsg('密码与确认密码不同')
     }
     return dispatch => {
         axios.post('./user/register', {user, pwd, type})
         .then(res=> {
-            if(res.status ===200 && res.data.code ===0){
+            if(res.status === 200 && res.data.code === 0){
                 dispatch(registerSuccess(res.data))
             }else {
-
+                dispatch(errorMsg(res.data.msg))
             }
         })
     }

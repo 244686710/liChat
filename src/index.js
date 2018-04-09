@@ -15,7 +15,7 @@ import {
     Redirect,
     Switch
 } from 'react-router-dom'
-
+import './index.css'
 
 // const store = createStore(counter, applyMiddleware(thunk)) // applyMiddleware使用中间件
     // thunk的使用主要是修改我们action crate的方式

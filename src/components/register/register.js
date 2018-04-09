@@ -1,6 +1,12 @@
 import React from 'react';
 import Logo from '../../components/logo/logo'
 import {List, Radio, InputItem, WingBlank, WhiteSpace, Button} from 'antd-mobile'
+import {connect} from 'react-redux'
+import { register } from '../../redux/user.redux'
+@connect(
+    state => state.user,
+    {register}
+)
 
 class Register extends React.Component {
     constructor(props) {
@@ -20,6 +26,8 @@ class Register extends React.Component {
 
     }
     handleRegister () {
+        console.log(this.props)
+        this.props.register(this.state)
         console.log(this.state)
     }
     render () {
@@ -29,6 +37,7 @@ class Register extends React.Component {
                 <Logo/>
                 <WingBlank>
                     <List>
+                        {this.props.msg ? <p className="error-msg">{this.props.msg}</p>: ''}
                         <InputItem
                             onChange = {v=> this.handleChange('user',v)}
                         >用户名</InputItem>
@@ -43,12 +52,12 @@ class Register extends React.Component {
                             onChange = {v=> this.handleChange('repeatpwd',v)}
                         >确认密码</InputItem>
                         <WhiteSpace/>
-                        <RadioItem checked={this.state.type =='genuis'}
+                        <RadioItem checked={this.state.type === 'genius'}
                             onChange={() =>this.handleChange('type', 'genuis')}
                         >
                             牛人
                         </RadioItem>
-                        <RadioItem checked={this.state.type =='boss'}
+                        <RadioItem checked={this.state.type ==='boss'}
                             onChange={() =>this.handleChange('type', 'boss')}
                         >
                             BOSS
