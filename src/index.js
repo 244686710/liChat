@@ -8,6 +8,9 @@ import reducers from './reducers'
 import Login from './components/login/login.js'
 import Register from './components/register/register.js'
 import AuthRoute from './components/authroute/authroute'
+import BossInfo from './components/bossinfo/bossinfo'
+import GeniusInfo from './components/geniusinfo/geniusinfo'
+
 import {
     BrowserRouter, 
     Route,
@@ -24,16 +27,14 @@ const store = createStore(reducers, compose(
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // 开启redux监控
 ));
 
-console.log(store.getState())
-function Boss() {
-    return <h3>boss页面</h3>
-}
+
  ReactDom.render(
     (<Provider store = {store}>  
         <BrowserRouter>
             <div>
                 <AuthRoute></AuthRoute>
-                <Route path="/boss" component={Boss}></Route>
+                <Route path="/geniusinfo" component={GeniusInfo}></Route>
+                <Route path="/bossinfo" component={BossInfo}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component={Register}></Route>
             </div>
